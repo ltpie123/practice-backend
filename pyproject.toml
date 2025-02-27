@@ -10,19 +10,17 @@ readme = "README.md"
 requires-python = ">=3.8"
 license = "MIT"
 keywords = []
-authors = [
-  { name = "Elias Chokeir", email = "ltpie12345+github.com" },
-]
+authors = [{ name = "Elias Chokeir", email = "ltpie12345+github@gmail.com" }]
 classifiers = [
-  "Development Status :: 4 - Beta",
-  "Programming Language :: Python",
-  "Programming Language :: Python :: 3.8",
-  "Programming Language :: Python :: 3.9",
-  "Programming Language :: Python :: 3.10",
-  "Programming Language :: Python :: 3.11",
-  "Programming Language :: Python :: 3.12",
-  "Programming Language :: Python :: Implementation :: CPython",
-  "Programming Language :: Python :: Implementation :: PyPy",
+   "Development Status :: 4 - Beta",
+   "Programming Language :: Python",
+   "Programming Language :: Python :: 3.8",
+   "Programming Language :: Python :: 3.9",
+   "Programming Language :: Python :: 3.10",
+   "Programming Language :: Python :: 3.11",
+   "Programming Language :: Python :: 3.12",
+   "Programming Language :: Python :: Implementation :: CPython",
+   "Programming Language :: Python :: Implementation :: PyPy",
 ]
 dependencies = []
 
@@ -34,10 +32,19 @@ Source = "https://github.com/Elias Chokeir/app"
 [tool.hatch.version]
 path = "src/app/__about__.py"
 
+[tool.hatch.envs.default]
+# Default environment
+python = "3.12"
+installer = "uv"
+path = ".venv"
+
+[tool.hatch.envs.default.scripts]
+# Default scripts for dev and database operations
+def = "fastapi dev {args:src/app/main.py}"
+
 [tool.hatch.envs.types]
-extra-dependencies = [
-  "mypy>=1.0.0",
-]
+installer = "uv"
+extra-dependencies = ["mypy>=1.0.0"]
 [tool.hatch.envs.types.scripts]
 check = "mypy --install-types --non-interactive {args:src/app tests}"
 
@@ -45,17 +52,11 @@ check = "mypy --install-types --non-interactive {args:src/app tests}"
 source_pkgs = ["app", "tests"]
 branch = true
 parallel = true
-omit = [
-  "src/app/__about__.py",
-]
+omit = ["src/app/__about__.py"]
 
 [tool.coverage.paths]
 app = ["src/app", "*/app/src/app"]
 tests = ["tests", "*/app/tests"]
 
 [tool.coverage.report]
-exclude_lines = [
-  "no cov",
-  "if __name__ == .__main__.:",
-  "if TYPE_CHECKING:",
-]
+exclude_lines = ["no cov", "if __name__ == .__main__.:", "if TYPE_CHECKING:"]
