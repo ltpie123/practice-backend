@@ -7,9 +7,9 @@ load_dotenv()
 
 
 class Settings(BaseSettings):
-    DATABASE_URL: str
+    SQLALCHEMY_DATABASE_URL: str
 
-    model_config: SettingsConfigDict(env_file=".env", env_file_encoding="utf-8")
+    model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8")
 
 
 @lru_cache
