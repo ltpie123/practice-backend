@@ -7,7 +7,7 @@ name = "app"
 dynamic = ["version"]
 description = ''
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.12"
 license = "MIT"
 keywords = []
 authors = [{ name = "Elias Chokeir", email = "ltpie12345+github@gmail.com" }]
