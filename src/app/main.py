@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from datetime import datetime, UTC
 
-from app.core.config import Settings
+from app.core.config import settings
 from app.core.database import Base, engine
 from sqlalchemy import Column, Integer, Boolean, String, DateTime
 
